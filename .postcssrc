@@ -1,0 +1,10 @@
+{
+  "plugins": {
+    "autoprefixer": {},
+    "postcss-extend": {},
+    "postcss-preset-env": {},
+    "postcss-reporter": {},
+    "stylelint": {},
+    "tailwindcss": {}
+  }
+}

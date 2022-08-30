@@ -1,0 +1,36 @@
+{
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-standard",
+    "stylelint-config-recess-order",
+    "stylelint-config-css-modules",
+    "stylelint-config-prettier"
+  ],
+  "ignoreFiles": [
+    "./coverage/**/*.css",
+    "./dist/**/*.css"
+  ],
+  "rules": {
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "tailwind",
+          "apply",
+          "variants",
+          "responsive",
+          "screen"
+        ]
+      }
+    ],
+    "declaration-block-no-duplicate-custom-properties": null,
+    "declaration-block-trailing-semicolon": null,
+    "named-grid-areas-no-invalid": null,
+    "no-descending-specificity": null,
+    "no-duplicate-selectors": null,
+    "no-empty-source": null,
+    "selector-max-universal": 1,
+    "selector-pseudo-element-no-unknown": null,
+    "string-no-newline": null
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "esbenp.prettier-vscode",
+    "csstools.postcss",
+    "dbaeumer.vscode-eslint",
+    "joshbolduc.commitlint",
+    "formulahendry.auto-close-tag",
+    "formulahendry.auto-rename-tag",
+    "christian-kohler.npm-intellisense",
+    "stylelint.vscode-stylelint",
+    "wix.vscode-import-cost",
+    "eamodio.gitlens",
+    "usernamehw.errorlens"
+  ]
+}
