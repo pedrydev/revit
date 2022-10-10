@@ -12,15 +12,15 @@ const defaultComparisonFunction = <T>(a: T, b: T) => {
   return a === b;
 };
 
-export interface UseSetArgs<T> {
+export interface UseSelectedArgs<T> {
   comparisonFunction: (a: T, b: T) => boolean;
   initSelected?: T[];
 }
 
-export default function useSet<T>({
+export default function useSelected<T>({
   initSelected = [],
   comparisonFunction = defaultComparisonFunction,
-}: UseSetArgs<T>) {
+}: UseSelectedArgs<T>) {
   const [selected, setSelected] = useState<T[]>(initSelected);
 
   const update = useCallback(
