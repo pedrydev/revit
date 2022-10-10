@@ -2,6 +2,7 @@ import { createBrowserRouter, RouteObject, RouterProvider } from 'react-router-d
 import Layout from '@/app/Layout';
 import NotFound from './NotFound';
 import type RouteConfig from './RouteConfig';
+import RouteError from './RouteError';
 
 type NamedRouteObject = RouteObject & {
   name?: string;
@@ -20,7 +21,11 @@ function parseConfigs(configs: Record<string, unknown>, isLayout: boolean) {
 
   keys.forEach((path) => {
     // eslint-disable-next-line security/detect-object-injection
-    const config = configs[path] as RouteConfig;
+    const config: RouteConfig = {
+      // eslint-disable-next-line security/detect-object-injection
+      ...(configs[path] as RouteConfig),
+      errorElement: <RouteError />,
+    };
     if (config.parent) {
       const parent = routeObjects.filter((r) => r.name === config.parent)[0];
       if (parent.children) {
@@ -31,12 +36,8 @@ function parseConfigs(configs: Record<string, unknown>, isLayout: boolean) {
     } else {
       // @ts-ignore
       routeObjects.push({
+        ...config,
         children: [],
-        element: config.element,
-        index: config.index,
-        name: config.name,
-        path: config.path,
-        loader: config.loader,
       });
     }
   });
