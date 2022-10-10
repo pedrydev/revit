@@ -1,13 +1,11 @@
 import Add from '@mui/icons-material/Add';
 import Delete from '@mui/icons-material/Delete';
 import Edit from '@mui/icons-material/Edit';
-import { Button, IconButton, Tooltip } from '@mui/material';
+import { Button, IconButton, TextField, Tooltip } from '@mui/material';
 import { forwardRef, useEffect, useImperativeHandle, useMemo, useState } from 'react';
-
 import Table, { TableColumn, TableRecord } from '@/common/display/Table';
-import { useSnackbar } from '@/common/feedback/Snackbar';
-import TextField from '@/common/form/TextField';
 import { useDialog } from '@/common/feedback/Dialog';
+import { useSnackbar } from '@/common/feedback/Snackbar';
 
 interface User extends TableRecord {
   name: string;
@@ -48,8 +46,14 @@ const UserForm = forwardRef((props: UserFormProps, ref) => {
 
   return (
     <div className='flex flex-col space-y-3'>
-      <TextField label='Name' onChange={setName} required value={name} />
-      <TextField label='Email' onChange={setEmail} required type='email' value={email} />
+      <TextField label='Name' onChange={(ev) => setName(ev.target.value)} required value={name} />
+      <TextField
+        label='Email'
+        onChange={(ev) => setEmail(ev.target.value)}
+        required
+        type='email'
+        value={email}
+      />
     </div>
   );
 });
