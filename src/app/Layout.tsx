@@ -13,6 +13,7 @@ import Spinner from '@/common/feedback/Spinner';
 import { SidebarProvider } from '@/common/layout/Sidebar';
 import Header from './Header';
 import Footer from './Footer';
+import { Outlet } from 'react-router-dom';
 
 export interface LayoutState {
   currentModule?: string;
@@ -76,7 +77,7 @@ export function useLayout(state: Partial<LayoutState>) {
   }, [fns, state]);
 }
 
-export default function Layout({ children }: PropsWithChildren<unknown>) {
+export default function Layout() {
   const height = useContentHeight();
 
   return (
@@ -85,7 +86,9 @@ export default function Layout({ children }: PropsWithChildren<unknown>) {
         <Header />
         <Toolbar />
         <div style={{ minHeight: height }}>
-          <Suspense fallback={<Spinner variant='page' />}>{children}</Suspense>
+          <Suspense fallback={<Spinner variant='page' />}>
+            <Outlet />
+          </Suspense>
         </div>
         <Footer />
       </SidebarProvider>

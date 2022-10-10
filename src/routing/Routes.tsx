@@ -1,11 +1,6 @@
-import { Suspense } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
-import type { RouteObject } from 'react-router-dom';
-import { useRoutes } from 'react-router-dom';
-
-import Spinner from '@/common/feedback/Spinner';
+import { createBrowserRouter, RouteObject, RouterProvider } from 'react-router-dom';
+import Layout from '@/app/Layout';
 import NotFound from './NotFound';
-import RouteErrorBoundary from './RouteErrorBoundary';
 import type RouteConfig from './RouteConfig';
 
 type NamedRouteObject = RouteObject & {
@@ -59,12 +54,13 @@ routeObjects.push({
   path: '/*',
 });
 
-export default function Routes() {
-  const routes = useRoutes(routeObjects);
+const router = createBrowserRouter([
+  {
+    element: <Layout />,
+    children: routeObjects,
+  },
+]);
 
-  return (
-    <ErrorBoundary FallbackComponent={RouteErrorBoundary}>
-      <Suspense fallback={<Spinner variant='page' />}>{routes}</Suspense>
-    </ErrorBoundary>
-  );
+export default function Routes() {
+  return <RouterProvider router={router} />;
 }
