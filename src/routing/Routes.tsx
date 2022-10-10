@@ -16,7 +16,7 @@ const routeObjects: NamedRouteObject[] = [];
 
 function parseConfigs(configs: Record<string, unknown>, isLayout: boolean) {
   const keys: string[] = [];
-  const configKeys = Object.keys(routeConfigs);
+  const configKeys = Object.keys(configs);
   configKeys.forEach((path) => {
     if (isLayout && path.includes('Layout')) keys.push(path);
     else if (!isLayout && !path.includes('Layout')) keys.push(path);
@@ -25,7 +25,7 @@ function parseConfigs(configs: Record<string, unknown>, isLayout: boolean) {
 
   keys.forEach((path) => {
     // eslint-disable-next-line security/detect-object-injection
-    const config = routeConfigs[path] as RouteConfig;
+    const config = configs[path] as RouteConfig;
     if (config.parent) {
       const parent = routeObjects.filter((r) => r.name === config.parent)[0];
       if (parent.children) {
@@ -34,6 +34,7 @@ function parseConfigs(configs: Record<string, unknown>, isLayout: boolean) {
         parent.children = [config];
       }
     } else {
+      // @ts-ignore
       routeObjects.push({
         children: [],
         element: config.element,
