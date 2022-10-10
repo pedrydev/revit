@@ -36,6 +36,7 @@ function parseConfigs(configs: Record<string, unknown>, isLayout: boolean) {
         index: config.index,
         name: config.name,
         path: config.path,
+        loader: config.loader,
       });
     }
   });
