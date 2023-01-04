@@ -38,12 +38,17 @@ export default function LanguageSwitchIcon() {
         sx={{ mt: 1 }}
       >
         <MenuItem onClick={handleLangChange('es')} value='es'>
-          <img alt={t('spanish')} className='mr-1.5' src='https://flagcdn.com/es.svg' width='24' />
+          <img
+            alt={t('spanish') as string}
+            className='mr-1.5'
+            src='https://flagcdn.com/es.svg'
+            width='24'
+          />
           {t('spanish')}
         </MenuItem>
         <MenuItem onClick={handleLangChange('en')} value='en'>
           <img
-            alt={t('english')}
+            alt={t('english') as string}
             className='mr-1.5'
             src='https://flagcdn.com/gb.svg'
             width='24'

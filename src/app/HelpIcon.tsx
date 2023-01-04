@@ -14,7 +14,7 @@ export default function HelpIcon() {
   const handleClick = () => window.open(helpUrl, '_blank');
 
   return (
-    <Tooltip title={t('help')}>
+    <Tooltip title={t('help') as string}>
       <IconButton onClick={handleClick}>
         <Help />
       </IconButton>

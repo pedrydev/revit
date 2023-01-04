@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 
 import type RouteConfig from '@/routing/RouteConfig';
-import todoService from './services/todo-service';
+import todoService from './services/TodoService';
 import { queryClient } from '@/providers/ReactQuery';
 
 const Page = lazy(async () => import('./Todos'));
